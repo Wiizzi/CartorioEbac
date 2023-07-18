@@ -79,12 +79,14 @@ int consulta()
 	FILE *file;
 	file = fopen (cpf, "r"); //"r" serve para ler as informacoes
 	
-	if(file == NULL) //Null = que nao existe ou n foi criado
+if(file == NULL) // Verifica se o arquivo não existe
 	{
 		printf("\n Não foi possível abrir arquivo, não localizado! \n\n");
+		system("pause");
+		return 0;
 	}
 	
-		printf("\n Informações do cadastro: \n\n");
+	printf("\n Informações do cadastro: \n\n");
 	
 	while(fgets(conteudo, 200, file) != NULL)
 	{
@@ -141,9 +143,10 @@ int main ()
 		printf("\t\t\t\t\t\t*** Cartório da EBAC ***\n\n"); //Topo - Inicio
 		printf("\t\t\t\t\tMuito bem-vindo! Como posso servir hoje? \n\n");
 		printf("Selecione uma das seguintes opções\n\n");
-		printf("\t1 - Registrar novo aluno \n ");
+		printf("\t1 - Registrar novo aluno \n");
 		printf("\t2 - Consultar aluno \n");
-		printf("\t3 - Excluir aluno \n\n\n"); 
+		printf("\t3 - Excluir aluno \n"); 
+		printf("\t4 - Sair do sistema \n\n\n");
 		printf("Digite a opção: ");//Fim menu
 	
 		scanf("%d", &opcao); //armazenando escolha do usuário
@@ -164,6 +167,11 @@ int main ()
 				deletar(); //chamada de funcao
 				break;
 				
+			case 4:
+				printf("\n Obrigado por utilizar o sistema!\n"); 
+				return 0;
+				break;
+				 
 			default:
 				printf("Essa opção não está disponível no momento!\n");
 				system("pause");
